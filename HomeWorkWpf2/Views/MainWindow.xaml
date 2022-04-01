@@ -1,0 +1,191 @@
+﻿<Window x:Class="HomeWorkWpf2.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HomeWorkWpf2"
+        mc:Ignorable="d"
+        Loaded="Window_Loaded"
+        WindowStartupLocation="CenterScreen"
+        Title="Задание на 3.04.2022" Height="570" Width="1010">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="365"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <!--меню-->
+        <Menu Grid.Row="0" FontSize="16" Foreground="DarkBlue"> 
+            <MenuItem Header="файл">
+                <MenuItem Header="формирование коллекции" Click="Start_Click"/>
+                <MenuItem Header="открыть" Click="FileOpen_Click"/>
+                <MenuItem Header="сохранить" Click="FileSave_Click"/>
+                <MenuItem Header="выход" Click="Exit_Click"/>
+            </MenuItem>
+            <MenuItem Header="задачи" Margin="30,0">
+                <MenuItem Header="добавить" Click="Add_Click"/>
+                <MenuItem Header="редактировать" Click="Edit_Click"/>
+                <MenuItem Header="сортировка">
+                    <MenuItem Header="по индексу" Click="SortIndex_Click"/>
+                    <MenuItem Header="по адресу" Click="SortStreet_Click"/>
+                    <MenuItem Header="по периоду" Click="SortPeriod_Click"/>
+                </MenuItem>
+                <MenuItem Header="выборка">
+                    <MenuItem Header="по типу" Click="ChoiceType_Click">
+                        <ListBox Name="lbMenuType"/>
+                    </MenuItem>
+                    <MenuItem Header="по периоду" Click="ChoicePeriod_Click">
+                        <ListBox Name="lbMenuPeriod"/>
+                    </MenuItem>
+                    <MenuItem Header="по фамилии" Click="ChoiceName_Click">
+                        <ListBox Name="lbMenuName"/>
+                    </MenuItem>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="выход" Margin="250,0" Click="Exit_Click"/>
+        </Menu>
+        <!--панель задач-->
+        <ToolBar Grid.Row="1" Foreground="DarkGreen">
+            <!--сортировка-->
+            <GroupBox Header="сортировка" FontSize="12" Width="220" Height="100" BorderBrush="DarkGreen">
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="по индексу" Foreground="DarkBlue"
+                            Height="30" Margin="3" Click="SortIndex_Click"/>
+                    <Button Content="по адресу" Foreground="DarkBlue" 
+                            Height="30" Margin="3" Click="SortStreet_Click"/>
+                    <Button Content="по периоду" Foreground="DarkBlue" 
+                            Height="30" Margin="3" Click="SortPeriod_Click"/>
+                </StackPanel>
+            </GroupBox>
+            <Separator Margin="10"/>
+            <!--панель инструментов выборка-->
+            <GroupBox Header="выборка" FontSize="12" Width="480" Height="100" BorderBrush="DarkGreen">
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="тип" Margin="0, 25, 0, 0"/>
+                    <ComboBox Name="cbType" Height="30" Width="100"
+                              SelectionChanged="CbType_Selected"/>
+                    <Label Content="период" Margin="5, 25, 0, 0"/>
+                    <ComboBox Name="cbPeriod" Height="30" Width="100"
+                              SelectionChanged="CbPeriod_Selected"/>
+                    <Label Content="фамилия" Margin="5,25,0,0"/>
+                    <ComboBox Name="cbName" Height="30" Width="100"
+                              SelectionChanged="CbName_Selected"/>
+                 </StackPanel>
+            </GroupBox>
+            <Separator Margin="10"/>
+            <!--панель инструментов остальное-->
+            <GroupBox Header="задачи" FontSize="12" Width="220" Height="100" BorderBrush="DarkGreen">
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="Редактировать" Foreground="DarkBlue"
+                            Height="30" Margin="3" Click="Edit_Click"/>
+                    <Button Content="Добавить" Foreground="DarkBlue" 
+                            Height="30" Margin="3" Click="Add_Click"/>
+                    <Button Content="Удалить" Foreground="DarkBlue" 
+                            Height="30" Margin="3" Click="Delet_Click"/>
+                </StackPanel>
+            </GroupBox>    
+            
+            
+        </ToolBar>
+        <!--DataGrid-->
+        <TabControl x:Name="tbControl" Grid.Row="2">
+            <!--основная вкладка-->
+            <TabItem x:Name="tbiBaze" Header="Подписки">
+                <DataGrid x:Name="dgBaze" AutoGenerateColumns="False"
+                          IsReadOnly="True" Foreground="DarkBlue"
+                          FontSize="16">
+                    <DataGrid.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="редактировать" Click="Edit_Click"/>
+                            <MenuItem Header="добавить" Click="Add_Click"/>
+                            <MenuItem Header="удалить" Click="Delet_Click"/>
+                            <MenuItem Header="выход" Click="Exit_Click"/>
+                        </ContextMenu>
+                    </DataGrid.ContextMenu>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Имя"
+                                            Binding="{Binding Path=Pipl.Surname}"
+                                            Width="280"/>
+                        <DataGridTextColumn Header="индекс"
+                                            Binding="{Binding Path=Pub.IndexPub}"
+                                            Width="150"/>
+                        <DataGridTextColumn Header="название"
+                                            Binding="{Binding Path=Pub.Title}"
+                                            Width="300"/>
+                        <DataGridTextColumn Header="улица"
+                                            Binding="{Binding Path=Pipl.Street}"
+                                            Width="250"/>
+                    </DataGrid.Columns>
+                    <!--подробная информация-->
+                    <DataGrid.RowDetailsTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Foreground="DarkGreen" Text=" Тип издания "/>
+                                <TextBlock Foreground="Red" Text="{Binding Path=Pub.TypePub}"/>
+                                <TextBlock Foreground="DarkGreen" Text=".      Дата подписки "/>
+                                <TextBlock Foreground="Red" Text="{Binding Path=DateStart}"/>
+                                <TextBlock Foreground="DarkGreen" Text=".    Период "/>
+                                <TextBlock Foreground="Red" Text="{Binding Path=Period}"/>
+                                <TextBlock Foreground="DarkGreen" Text="    Дом "/>
+                                <TextBlock Foreground="Red" Text="{Binding Path=Pipl.House}"/>
+                                <TextBlock Foreground="DarkGreen" Text=".    Квартира "/>
+                                <TextBlock Foreground="Red" Text="{Binding Path=Pipl.Flat}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGrid.RowDetailsTemplate>
+                </DataGrid>
+            </TabItem>
+            <!--вкладка сортировка-->
+            <TabItem x:Name="tabItemSort" Header="сортировка">
+                <DataGrid x:Name="dgSort" AutoGenerateColumns="False"
+                          IsReadOnly="True" Foreground="DarkBlue"
+                          FontSize="16">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Имя"
+                                            Binding="{Binding Path=Pipl.Surname}"
+                                            Width="280"/>
+                        <DataGridTextColumn Header="индекс"
+                                            Binding="{Binding Path=Pub.IndexPub}"
+                                            Width="150"/>
+                        <DataGridTextColumn Header="название"
+                                            Binding="{Binding Path=Pub.Title}"
+                                            Width="300"/>
+                        <DataGridTextColumn Header="улица"
+                                            Binding="{Binding Path=Pipl.Street}"
+                                            Width="250"/>
+                    </DataGrid.Columns>
+                    
+                </DataGrid>
+            </TabItem>
+            <!--вкладка выборка-->
+            <TabItem x:Name="tabItemChoice" Header="выборка">
+                <DataGrid Name="dgChoice" AutoGenerateColumns="False"
+                          IsReadOnly="True" Foreground="DarkBlue"
+                          FontSize="16">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Имя"
+                                            Binding="{Binding Path=Pipl.Surname}"
+                                            Width="280"/>
+                        <DataGridTextColumn Header="индекс"
+                                            Binding="{Binding Path=Pub.IndexPub}"
+                                            Width="150"/>
+                        <DataGridTextColumn Header="название"
+                                            Binding="{Binding Path=Pub.Title}"
+                                            Width="300"/>
+                        <DataGridTextColumn Header="улица"
+                                            Binding="{Binding Path=Pipl.Street}"
+                                            Width="250"/>
+                    </DataGrid.Columns>
+
+                </DataGrid>
+            </TabItem>
+        </TabControl>
+
+        <StatusBar Grid.Row="3" Margin="10,0" Foreground="DarkGreen" FontSize="16">
+            <StatusBarItem>
+                <TextBlock Name="tbStatus"/>
+            </StatusBarItem>
+        </StatusBar>
+    </Grid>
+</Window>

@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32126.317
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeWorkWpf", "HomeWorkWpf\HomeWorkWpf.csproj", "{696D28F4-682E-460A-B444-C43D6F71FE76}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeWorkWpf2", "HomeWorkWpf2\HomeWorkWpf2.csproj", "{FA39112F-9F49-4AD5-B7FF-6C3B65303EDA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{696D28F4-682E-460A-B444-C43D6F71FE76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{696D28F4-682E-460A-B444-C43D6F71FE76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{696D28F4-682E-460A-B444-C43D6F71FE76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{696D28F4-682E-460A-B444-C43D6F71FE76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA39112F-9F49-4AD5-B7FF-6C3B65303EDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA39112F-9F49-4AD5-B7FF-6C3B65303EDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA39112F-9F49-4AD5-B7FF-6C3B65303EDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA39112F-9F49-4AD5-B7FF-6C3B65303EDA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5792BC1E-2726-48F5-AA5E-AA6D8468BD3D}
+	EndGlobalSection
+EndGlobal

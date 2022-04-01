@@ -1,0 +1,52 @@
+﻿<Window x:Class="HomeWorkWpf.Views.InfoWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HomeWorkWpf.Views"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="InfoWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+        </Grid.RowDefinitions>
+        <ScrollViewer Grid.Row="0">
+            <TextBlock TextAlignment="Center" TextWrapping="WrapWithOverflow" FontSize="18" FontFamily="Cambria"  Margin="20">
+                 Разработайте класс для представления телевизора в ремонтной мастерской:
+                <LineBreak/>
+                производитель и тип телевизора, диагональ экрана, строка с описанием дефекта,
+                фамилия и инициалами мастера, фамилия и инициалы владельца, стоимость ремонта.
+                <LineBreak/>
+                Разработайте класс для представления ремонтной мастерской:<LineBreak/>
+                коллекция телевизоров в ремонте, название ремонтной мастерской,
+                адрес ремонтной мастерской.
+                <LineBreak/>
+          Окно отображения данных по ремонту телевизоров должно использовать вкладки иметь следующий 
+                функционал (за счет меню, панели инструментов в самом окне). <LineBreak/>
+                Вкладка «Телевизоры в ремонте» должна иметь контекстное меню для добавления 
+                телевизора, редактирования, удаления телевизора и выхода из приложения:
+                <LineBreak/>
+•	Начальное формирование данных ремонтной мастерской (коллекция телевизоров от 12 до 15 штук),
+                вывод во вкладке «Телевизоры в ремонте»<LineBreak/>
+•	Добавление телевизора в коллекцию<LineBreak/>
+•	Редактирование выбранного телевизора коллекции<LineBreak/>
+•	Упорядочивание копии коллекции телевизоров, вывод копии во вкладке «Сортировка»<LineBreak/>
+o	По производителю и типу<LineBreak/>
+o	По убыванию диагонали экрана<LineBreak/>
+o	По мастеру, выполняющему ремонт
+o	По владельцу телевизора<LineBreak/>
+•	Выборка и вывод во вкладке «Выборка» коллекции телевизоров с минимальной стоимостью ремонта
+                <LineBreak/>
+•	Выборка и вывод во вкладке «Выборка» коллекции телевизоров, ремонтируемых выбранным мастером
+                <LineBreak/>
+•	Выборка и вывод во вкладке «Выборка» коллекции телевизоров, с заданной диагональю экрана
+
+            </TextBlock>
+        </ScrollViewer>
+        <TextBlock Grid.Row="1" FontSize="18" Foreground="DarkBlue" Padding="250, 10, 0, 0">
+            Черкас Николай группа <Run Foreground="Red">ВПД-01</Run>
+        </TextBlock>
+    </Grid>
+</Window>
